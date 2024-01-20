@@ -35,7 +35,7 @@ export default function ProductDetailLayout({ product }) {
   const {
     availableQty,
     description,
-    images,
+    /* images, */
     price,
     productName,
     productType,

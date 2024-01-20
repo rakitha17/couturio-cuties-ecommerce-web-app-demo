@@ -1,6 +1,36 @@
 import React from "react"
-import image5 from '../../../assets/images/allIems/singleProducts/image-5.jpg'
-import image105 from '../../../assets/images/allIems/singleProducts/image-105.jpg'
+import image2 from '../../../assets/images/allIems/singleProducts/image-2.jpg'
+import image102 from '../../../assets/images/allIems/singleProducts/image-102.jpg'
+
+export default function ImageComponent({ images }) {
+  // let [imageSrc, setImageSrc] = React.useState(images[0])
+  let [imageSrc, setImageSrc] = React.useState(image2)
+
+  /* React.useEffect(() => {
+    setImageSrc(images[0])
+  }, [images[0]]) */
+
+  return (
+    <div style={{ width: "100%", aspectRatio: "7 / 10" }}>
+      <div
+        style={{
+          inlineSize: "100%",
+          height: "100%",
+          backgroundImage: `url(${imageSrc})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          borderRadius: "5px",
+        }}
+        onMouseOver={() => setImageSrc(image102)}
+        onMouseOut={() => setImageSrc(image2)}
+      ></div>
+    </div>
+  )
+}
+
+
+//NOTE - samples
 /* const imageList = [
   image1,
   image2,
@@ -21,42 +51,12 @@ import image105 from '../../../assets/images/allIems/singleProducts/image-105.jp
   image108,
   image109,
 ] */
-
-export default function ImageComponent({ images }) {
-  // let [imageSrc, setImageSrc] = React.useState(images[0])
-  let [imageSrc, setImageSrc] = React.useState(image5)
-
-  /* React.useEffect(() => {
-    setImageSrc(images[0])
-  }, [images[0]]) */
-
-  return (
-    <div style={{ width: "100%", aspectRatio: "7 / 10" }}>
-      <div
-        style={{
-          inlineSize: "100%",
-          height: "100%",
-          backgroundImage: `url(${imageSrc})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          borderRadius: "5px",
-        }}
-        onMouseOver={() => setImageSrc(image105)}
-        onMouseOut={() => setImageSrc(image5)}
-      ></div>
-    </div>
-  )
-}
-
 /* let [imageSrc, setImageSrc] = React.useState(images[0])
 let [imageSrc, setImageSrc] = React.useState(imageList[images[0]]) */
-
 /* onMouseOver={() => setImageSrc(images[1])}
 onMouseOut={() => setImageSrc(images[0])}
 onMouseOver={() => setImageSrc(imageList[10])}
 onMouseOut={() => setImageSrc(imageList[1])} */
-
 /* ;<img
   src={imageSrc}
   alt=""

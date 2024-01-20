@@ -23,8 +23,7 @@ export default function SingleItemLayout({ cartList }) {
   )
 }
 
-{
-  /* <div
+/* <div
       style={{
         width: "100%",
         display: "grid",
@@ -69,4 +68,3 @@ export default function SingleItemLayout({ cartList }) {
         <Remove />
       </div>
     </div> */
-}

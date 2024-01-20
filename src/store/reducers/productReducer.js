@@ -5,13 +5,6 @@ const initialState = {
   productList: [],
   displayProductList: [],
   selectedProduct: {},
-  sizeFilteringProductList: [
-    {name: 'xs', value: false},
-    {name: 's', value: false},
-    {name: 'm', value: false},
-    {name: 'l', value: false},
-    {name: 'xl', value: false},
-  ]
 }
 
 export const productReducer = (state = initialState, action) => {
@@ -36,7 +29,6 @@ export const productReducer = (state = initialState, action) => {
         ...state,
         fetchingDataStatus: "failed",
         productList: [],
-        displayProductList: []
       }
 
     case Actions.SETTING_UP_PRODUCT:
@@ -45,16 +37,6 @@ export const productReducer = (state = initialState, action) => {
         selectedProduct: action.payload,
       } 
     //NOTE - allItems data accordingly filtering
-    case Actions.SIZE_FILTER:
-      return {
-        ...state,
-        sizeFilteringProductList: action.payload
-      }
-    case Actions.DISPLAY_PRODUCT_LIST:
-      return{
-        ...state,
-        displayProductList: action.payload
-      }
     
     default:
       return state
