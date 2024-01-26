@@ -13,7 +13,6 @@ export default function CartLayout() {
   let minWidth900 = useMediaQuery("(min-width: 900px)")
 
   const { cartProduct } = cartStore
-  console.log(cartProduct)
 
   return (
     <CommonLayout>

@@ -3,10 +3,10 @@ import React from "react"
 import { Grid } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
 //LINK - utilities
-import {
+/* import {
   ladingProductList,
   getProductList,
-} from "../../../store/actions/productAction"
+} from "../../../store/actions/productAction" */
 //LINK - project components
 import ProductionListLayout from "./allItemsLayout/ProductListLayout"
 import FilterSectionLayout from "./allItemsLayout/FilterSectionLayout"
@@ -14,12 +14,12 @@ import FilterSectionLayout from "./allItemsLayout/FilterSectionLayout"
 export default function AllItemsLayout() {
   let productStore = useSelector((store) => store.productStore)
   const { fetchingDataStatus, /* productList, */ displayProductList } = productStore
-  let dispatch = useDispatch()
+  // let dispatch = useDispatch()
 
-  React.useEffect(() => {
+  /* React.useEffect(() => {
     dispatch(ladingProductList())
     dispatch(getProductList())
-  }, [])
+  }, []) */
 
   return (
     <Grid container spacing={2}>

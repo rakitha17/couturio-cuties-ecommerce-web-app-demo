@@ -2,7 +2,7 @@ import React from "react"
 //LINK - packages
 import { Grid } from "@mui/material"
 //LINK - sources
-import image from '../../../../../assets/images/allIems/singleProducts/image-2.jpg'
+import image from "../../../../../assets/images/allIems/singleProducts/image-2.jpg"
 //LINK - project components
 import {
   Image,

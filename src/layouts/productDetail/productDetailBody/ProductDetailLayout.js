@@ -51,12 +51,13 @@ export default function ProductDetailLayout({ product }) {
     price,
     size,
     description,
+    orderSize: [],
   })
 
   let dispatch = useDispatch()
 
   const addProductToCartFunc = () => {
-    dispatch(addToCartCreator(product))
+    dispatch(addToCartCreator(product, addItem.orderSize, addItem.qtyCount))
   }
 
   return (
@@ -102,7 +103,11 @@ export default function ProductDetailLayout({ product }) {
           </div>
 
           <div style={{ marginBottom: "10px", textAlign: "center" }}>
-            <AddCart addItem={addItem} setAddItem={setAddItem} addProductToCartFunc={addProductToCartFunc} />
+            <AddCart
+              addItem={addItem}
+              setAddItem={setAddItem}
+              addProductToCartFunc={addProductToCartFunc}
+            />
           </div>
           <hr />
           <div>

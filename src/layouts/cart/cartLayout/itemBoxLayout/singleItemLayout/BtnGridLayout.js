@@ -4,7 +4,7 @@ import { Grid } from "@mui/material"
 //LINK - project components
 import { Remove } from "../../../../../components/cart/layouts"
 
-export default function BtnGridLayout() {
+export default function BtnGridLayout({ removeProduct, productItem }) {
   return (
     <Grid
       container
@@ -13,7 +13,7 @@ export default function BtnGridLayout() {
       alignItems={"flex-end"}
     >
       <Grid item>
-        <Remove />
+        <Remove removeProduct={removeProduct} productItem={productItem} />
       </Grid>
     </Grid>
   )

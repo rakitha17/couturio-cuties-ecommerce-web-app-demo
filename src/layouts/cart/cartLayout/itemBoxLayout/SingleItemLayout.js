@@ -1,12 +1,19 @@
 import React from "react"
 //LINK - packages
 import { Grid } from "@mui/material"
+import { useDispatch } from "react-redux"
 //LINK - project components
 import ContentGridLayout from "./singleItemLayout/ContentGridLayout"
 import BtnGridLayout from "./singleItemLayout/BtnGridLayout"
+import { removeFromCartCreator } from "../../../../store/actions/cartAction"
 
 export default function SingleItemLayout({ cartList }) {
   const { productItem, orderDetails } = cartList
+  let dispatch = useDispatch()
+
+  const removeProduct = () => {
+    dispatch(removeFromCartCreator(cartList))
+  }
 
   return (
     <Grid container rowGap={1}>
@@ -17,12 +24,16 @@ export default function SingleItemLayout({ cartList }) {
         />
       </Grid>
       <Grid item xs={12} md={2} alignContent={"flex-end"}>
-        <BtnGridLayout />
+        <BtnGridLayout
+          removeProduct={removeProduct}
+          productItem={productItem}
+        />
       </Grid>
     </Grid>
   )
 }
 
+//NOTE - sample
 /* <div
       style={{
         width: "100%",

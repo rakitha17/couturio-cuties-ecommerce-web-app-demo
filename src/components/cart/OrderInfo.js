@@ -34,7 +34,7 @@ export default function OrderInfo({ orderSize, orderQty, total }) {
             fontSize: minWidth768 ? ".9rem" : ".8rem",
           }}
         >
-          {orderSize.toUpperCase()}
+          {orderSize.join(', ').toUpperCase()}
         </span>
       </Typography>
       <Typography

@@ -102,9 +102,8 @@ export default function FilteredList() {
             {appliedFilters.map((val, index) => {
               return (
                 val.isApplied && (
-                  <Grid item>
+                  <Grid item key={index}>
                     <FilterChip
-                      key={index}
                       title={val.title}
                       type={val.type}
                       removeChip={removeChip}

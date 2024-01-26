@@ -9,6 +9,14 @@ import FormLabel from "@mui/material/FormLabel"
 import SingleSizeComponent from "./sizeGroup/SingleSizeComponent"
 
 export default function SizeGroup({ addItem, setAddItem }) {
+  const handleChange = (e) => {
+    setAddItem({
+      ...addItem,
+      sizeChecked: "checked",
+      orderSize: [e.target.value],
+    })
+  }
+
   return (
     <FormControl>
       <FormLabel
@@ -40,9 +48,7 @@ export default function SizeGroup({ addItem, setAddItem }) {
                       color: "#DC143C",
                     },
                   }}
-                  onChange={() =>
-                    setAddItem({ ...addItem, sizeChecked: "checked" })
-                  }
+                  onChange={handleChange}
                 />
               }
               label={<SingleSizeComponent val={val} />}

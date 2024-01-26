@@ -4,12 +4,30 @@ import Button from "@mui/material/Button"
 import Dialog from "@mui/material/Dialog"
 import DialogActions from "@mui/material/DialogActions"
 import DialogContent from "@mui/material/DialogContent"
-import DialogContentText from "@mui/material/DialogContentText"
 import DialogTitle from "@mui/material/DialogTitle"
 import { DeleteForever as DeleteForeverIcon } from "@mui/icons-material"
-import { useMediaQuery } from "@mui/material"
+import { ThemeProvider, createTheme, useMediaQuery } from "@mui/material"
+//LINK - project components
+import RemoveProduct from "./itemRemoveBtn/RemoveProduct"
 
-export default function ItemRemoveBtn() {
+const theme = createTheme({
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          "&:hover": {
+            backgroundColor: "rgba(255, 255, 255, .1)",
+          },
+          "&:focus": {
+            backgroundColor: "rgba(255, 255, 255, .1)",
+          },
+        },
+      },
+    },
+  },
+})
+
+export default function ItemRemoveBtn({ removeProduct, productItem }) {
   const [open, setOpen] = React.useState(false)
   let minWidth768 = useMediaQuery("(min-width: 768px)")
 
@@ -38,20 +56,38 @@ export default function ItemRemoveBtn() {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
+        <DialogTitle
+          id="alert-dialog-title"
+          style={{
+            color: "#fff",
+            fontFamily: "DM Sans",
+            fontSize: "1.2rem",
+            backgroundColor: "#323232",
+          }}
+        >
+          {"Are you sure you want to remove this item from the cart ?"}
         </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
-          </DialogContentText>
+        <DialogContent style={{ paddingTop: "20px" }}>
+          <RemoveProduct productItem={productItem} />
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose} autoFocus>
-            Agree
-          </Button>
+        <DialogActions style={{ backgroundColor: "#323232" }}>
+          <ThemeProvider theme={theme}>
+            <Button
+              onClick={handleClose}
+              style={{ color: "#fff", fontFamily: "DM Sans" }}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={() => {
+                return handleClose(), removeProduct()
+              }}
+              autoFocus
+              style={{ color: "#fff", fontFamily: "DM Sans" }}
+            >
+              Remove
+            </Button>
+          </ThemeProvider>
         </DialogActions>
       </Dialog>
     </React.Fragment>
