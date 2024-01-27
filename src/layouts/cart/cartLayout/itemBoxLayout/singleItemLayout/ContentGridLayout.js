@@ -11,7 +11,7 @@ import {
 } from "../../../../../components/cart/layouts"
 
 export default function ContentGridLayout({ productItem, orderDetails }) {
-  const { productName, productType, images, description, price, SKU } =
+  const { productName, productType, /* images, */ description, price, SKU } =
     productItem
   const { size, qty } = orderDetails
 

@@ -8,7 +8,7 @@ import ItemImage from "../ItemImage"
 import ItemDescription from "../ItemDescription"
 
 export default function RemoveProduct({ productItem }) {
-  const { images, price, productName, productType, description, sku } =
+  const { /* images, */ price, productName, productType, description, sku } =
     productItem
   return (
     <Grid container spacing={2} alignItems={'center'} style={{ height: "100%" }}>

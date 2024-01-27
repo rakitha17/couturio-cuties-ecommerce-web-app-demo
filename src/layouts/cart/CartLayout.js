@@ -1,12 +1,15 @@
 import React from "react"
 //LINK - packages
 import { useMediaQuery } from "@mui/material"
+//LINK - sources
+import image from "../../assets/images/no items found/no-items-cart.png"
 //LINK - utilities
 import { useSelector } from "react-redux"
 //LINK - project components
 import CommonLayout from "../common/CommonLayout"
 import TotalAmount from "../../components/cart/TotalAmount"
 import ItemBoxLayout from "./cartLayout/ItemBoxLayout"
+import NoItemsFound from "../../components/common/NoItemsFound"
 
 export default function CartLayout() {
   let cartStore = useSelector((store) => store.cartStore)
@@ -16,20 +19,37 @@ export default function CartLayout() {
 
   return (
     <CommonLayout>
-      <div
-        style={{
-          padding: minWidth900 ? "calc(1.5rem * .5) 15%" : "calc(1.5rem * .5)",
-        }}
-      >
-        <div style={{ marginBottom: "10px" }}>
-          <TotalAmount />
+      {cartProduct.length > 0 ? (
+        <div
+          style={{
+            padding: minWidth900
+              ? "calc(1.5rem * .5) 15%"
+              : "calc(1.5rem * .5)",
+          }}
+        >
+          <div style={{ marginBottom: "10px" }}>
+            <TotalAmount />
+          </div>
+          <div>
+            {cartProduct.map((val, index) => {
+              return <ItemBoxLayout key={index} cartList={val} />
+            })}
+          </div>
         </div>
-        <div>
-          {cartProduct.map((val, index) => {
-            return <ItemBoxLayout key={index} cartList={val} />
-          })}
+      ) : (
+        <div
+          style={{
+            width: "100%",
+            height: "70vh",
+            padding: "calc(1.5rem * .5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <NoItemsFound content={"Sorry, Your cart is empty."} image={image} />
         </div>
-      </div>
+      )}
     </CommonLayout>
   )
 }
