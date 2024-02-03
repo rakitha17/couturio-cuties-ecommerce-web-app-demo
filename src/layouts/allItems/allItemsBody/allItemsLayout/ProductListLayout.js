@@ -1,7 +1,6 @@
 import React from "react"
 //LINK - packages
 import { Grid } from "@mui/material"
-import { useSelector } from "react-redux"
 //LINK - sources
 import image from "../../../../assets/images/no items found/no-items-allItems.png"
 //LINK - project components
@@ -9,12 +8,9 @@ import SingleProduct from "./productListlayout/SingleProduct"
 import NoItemsFound from "../../../../components/common/NoItemsFound"
 
 export default function ProductListLayout({ productList }) {
-  let productStore = useSelector((store) => store.productStore)
-  const { displayProductList } = productStore
-
   return (
     <>
-      {displayProductList.length > 0 ? (
+      {productList.length > 0 ? (
         <div>
           <Grid container spacing={2}>
             {productList.map((val, index) => {

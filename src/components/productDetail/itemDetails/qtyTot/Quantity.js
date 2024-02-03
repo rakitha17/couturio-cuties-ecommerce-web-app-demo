@@ -77,7 +77,7 @@ export default function Quantity({ addItem, setAddItem }) {
       <div style={{ width: "18px", margin: "0 5px", textAlign: "center" }}>
         <QtyNumber qtyCount={qtyCount} />
       </div>
-      <ToolTip target={target} toolTip={toolTip} />
+        <ToolTip target={target} toolTip={toolTip} />
       <IconButton
         aria-label="add"
         size="medium"
@@ -91,6 +91,7 @@ export default function Quantity({ addItem, setAddItem }) {
   )
 }
 
+//NOTE - sample
 /* React.useEffect(() => {
   if (remainingQty > 10 && count === 10) {
     setToolTip({

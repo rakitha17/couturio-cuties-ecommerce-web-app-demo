@@ -10,13 +10,16 @@ import { /* useDispatch, */ useSelector } from "react-redux"
 //LINK - project components
 import ProductionListLayout from "./allItemsLayout/ProductListLayout"
 import FilterSectionLayout from "./allItemsLayout/FilterSectionLayout"
+import SkeletonCard from "../../../components/allItems/SkeletonCard"
+import ErrorMsg from "../../../components/common/ErrorMsg"
 
 export default function AllItemsLayout() {
   let productStore = useSelector((store) => store.productStore)
-  const { fetchingDataStatus, /* productList, */ displayProductList } = productStore
+  const { fetchingDataStatus, /* productList, */ displayProductList } =
+    productStore
   // let dispatch = useDispatch()
 
-  /* React.useEffect(() => {
+/*   React.useEffect(() => {
     dispatch(ladingProductList())
     dispatch(getProductList())
   }, []) */
@@ -28,11 +31,21 @@ export default function AllItemsLayout() {
       </Grid>
       <Grid item xs={12} md={10}>
         {fetchingDataStatus === "loading" ? (
-          <div>.....Loading</div>
+          <SkeletonCard cards={12} />
         ) : fetchingDataStatus === "success" ? (
           <ProductionListLayout productList={displayProductList} />
         ) : fetchingDataStatus === "failed" ? (
-          <div>Error</div>
+          <div
+            style={{
+              width: "100%",
+              height: "70vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <ErrorMsg content="Sorry, Something went wrong." />
+          </div>
         ) : (
           ""
         )}
@@ -79,3 +92,15 @@ export default function AllItemsLayout() {
 
     setProductList(tempProduct)
   }, []) */
+//NOTE - sample product list layout
+/* <Grid item xs={12} md={10}>
+  {fetchingDataStatus === "loading" ? (
+    <div>.....Loading</div>
+  ) : fetchingDataStatus === "success" ? (
+    <ProductionListLayout productList={displayProductList} />
+  ) : fetchingDataStatus === "failed" ? (
+    <div>Error</div>
+  ) : (
+    ""
+  )}
+</Grid> */

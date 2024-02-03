@@ -1,17 +1,20 @@
 import React from "react"
-
+//LINK - packages
 import { Typography, useMediaQuery } from "@mui/material"
 import { Link } from 'react-router-dom'
+import { motion } from "framer-motion"
 
 export default function SliderLayout({ image, displayBtn }) {
   let minWidth1500 = useMediaQuery("(min-width: 1500px)")
   let minWidth768 = useMediaQuery("(min-width: 768px)")
   let minWidth600 = useMediaQuery("(min-width: 600px)")
   let minWidth425 = useMediaQuery("(min-width: 425px)")
+
   return (
     <div>
       {displayBtn && (
-        <div
+        <motion.div
+          role="button"
           style={{
             position: "absolute",
             left: "50%",
@@ -36,7 +39,8 @@ export default function SliderLayout({ image, displayBtn }) {
             backgroundColor: "rgba(0, 0, 0, .35)",
             cursor: "pointer",
           }}
-          role="button"
+          whileHover={{backgroundColor: '#000'}}
+          transition={{backgroundColor: {duration: .5}}}
         >
           <Typography
             component={Link}
@@ -59,7 +63,7 @@ export default function SliderLayout({ image, displayBtn }) {
           >
             shop now
           </Typography>
-        </div>
+        </motion.div>
       )}
       <img
         src={image.src}
