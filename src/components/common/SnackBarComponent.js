@@ -6,6 +6,11 @@ function MyApp({ change, snackbar, addItem }) {
   const { enqueueSnackbar } = useSnackbar()
   const { qtyCount, productName } = addItem
 
+  const handleClickVariant = (variant, contentState) => {
+    // variant could be success, error, warning, info, or default
+    enqueueSnackbar(contentState, { variant })
+  }
+
   React.useEffect(() => {
     if (change > 0) {
       snackbar
@@ -16,11 +21,6 @@ function MyApp({ change, snackbar, addItem }) {
         : handleClickVariant("error", `No quantities added from ${productName}`)
     }
   }, [change])
-
-  const handleClickVariant = (variant, contentState) => {
-    // variant could be success, error, warning, info, or default
-    enqueueSnackbar(contentState, { variant })
-  }
 
   return <React.Fragment></React.Fragment>
 }
