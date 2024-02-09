@@ -1,9 +1,14 @@
 import * as React from "react"
+//LINK - packages
 import { styled } from "@mui/material/styles"
 import FormGroup from "@mui/material/FormGroup"
 import Switch from "@mui/material/Switch"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
+import { useTranslation } from "react-i18next"
+import { useMediaQuery } from "@mui/material"
+//LINK - utilities
+import i18n from "../../../../i18next"
 
 const AntSwitch = styled(Switch)(({ theme }) => ({
   width: 28,
@@ -48,19 +53,42 @@ const AntSwitch = styled(Switch)(({ theme }) => ({
 }))
 
 export default function SwitchBtn() {
+  // const [langValue, setLangValue] = React.useState(false)
+  let minWidth600 = useMediaQuery("(min-width: 600px)")
+  let minWidth425 = useMediaQuery("(min-width: 425px)")
+  let minWidth375 = useMediaQuery("(min-width: 375px)")
+  const { t } = useTranslation()
+
+  const handleChange = () => {
+    i18n.changeLanguage(i18n.language === "en" ? "sin" : "en")
+  }
+
   return (
     <FormGroup>
       <Stack direction="row" spacing={1} alignItems="center">
         <Typography
           style={{
+            inlineSize: minWidth600 ? "60px" : minWidth375 ? "50px" : "40px",
             fontFamily: "DM Sans",
-            fontSize: ".9rem",
+            fontSize: minWidth600
+              ? "1rem"
+              : minWidth425
+              ? ".9rem"
+              : minWidth375
+              ? ".8rem"
+              : ".7rem",
+            textAlign: "center",
             letterSpacing: ".5px",
           }}
         >
-          English
+          {/* {langValue ? "සිංහල" : "English" } */}
+          {t("switch_language")}
         </Typography>
-        <AntSwitch defaultChecked inputProps={{ "aria-label": "ant design" }} />
+        <AntSwitch
+          checked={i18n.language === "en" ? false : true}
+          inputProps={{ "aria-label": "change language" }}
+          onChange={handleChange}
+        />
       </Stack>
     </FormGroup>
   )

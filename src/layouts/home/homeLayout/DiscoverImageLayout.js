@@ -1,10 +1,12 @@
 import React from "react"
-
-import FindMore from "./discoverImageLayout/FindMore"
-
+//LINK - packages
+import { useMediaQuery } from "@mui/material"
+import { motion } from "framer-motion"
+//LINK - sources
 import image1 from "../../../assets/images/home/discoverImage/image1.jpg"
 import image2 from "../../../assets/images/home/discoverImage/image2.jpg"
-import { useMediaQuery } from "@mui/material"
+//LINK - project components
+import FindMore from "./discoverImageLayout/FindMore"
 
 const images = [
   {
@@ -28,6 +30,16 @@ const images = [
     },
   },
 ]
+
+const parentVariant = {
+  rest: {
+    transition: { duration: 0.2, ease: "easeOut", type: "twean" },
+  },
+  hover: {
+    backgroundColor: "rgba(0, 0, 0, .5)",
+    transition: { duration: 0.5, ease: "easeIn", type: "twean" },
+  },
+}
 
 export default function DiscoverImageLayout() {
   let minWidth768 = useMediaQuery("(min-width: 768px)")
@@ -58,7 +70,7 @@ export default function DiscoverImageLayout() {
             role="img"
             aria-label={val.label.split("-").join(" ")}
           >
-            <div
+            <motion.div
               style={{
                 position: "absolute",
                 left: 0,
@@ -68,15 +80,18 @@ export default function DiscoverImageLayout() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                // backgroundColor: "rgba(0, 0, 0, .5)", //NOTE - at hover this going to be active
               }}
+              variants={parentVariant}
+              initial="rest"
+              animate="rest"
+              whileHover="hover"
             >
               <FindMore
                 topTxt={val.innerTexts.topTxt}
                 midTxt={val.innerTexts.midTxt}
                 bottomTxt={val.innerTexts.bottomTxt}
               />
-            </div>
+            </motion.div>
           </div>
         )
       })}

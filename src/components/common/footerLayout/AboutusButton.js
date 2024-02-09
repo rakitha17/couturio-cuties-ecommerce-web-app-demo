@@ -9,21 +9,10 @@ import IconButton from "@mui/material/IconButton"
 import Typography from "@mui/material/Typography"
 import CloseIcon from "@mui/icons-material/Close"
 import Slide from "@mui/material/Slide"
+import { useMediaQuery } from "@mui/material"
 //LINK - project components
 import SwitchBtn from "./aboutUsButton/SwitchBtn"
 import ListContent from "./aboutUsButton/ListContent"
-
-const questions = [
-  "gg I want to return my purchase! What do I do?",
-  "I would like to return a gift that was sent to me. How do I do that?",
-  "Can I exchange my order instead of returning it?",
-  "I printed out my label and misplaced it. How can I retrieve it again?",
-  "How long does it take for me to get a refund?",
-  "Do your pre-paid labels cover international returns?",
-  "I am returning an item purchased with a Gift Certificate or Gift Card, how does that work?",
-  "I only see the option to return my order through UPS on the website. Am I able to return through USPS instead?",
-  "What is Drop-off without shipping box and label?",
-]
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
@@ -31,6 +20,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function AboutusButton() {
   const [open, setOpen] = React.useState(false)
+  let minWidth600 = useMediaQuery("(min-width: 600px)")
+  let minWidth425 = useMediaQuery("(min-width: 425px)")
+  let minWidth375 = useMediaQuery("(min-width: 375px)")
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -71,17 +63,33 @@ export default function AboutusButton() {
               onClick={handleClose}
               aria-label="close"
             >
-              <CloseIcon />
+              <CloseIcon
+                style={{
+                  fontSize: minWidth600
+                    ? "1.2rem"
+                    : minWidth425
+                    ? "1rem"
+                    : minWidth375
+                    ? ".9rem"
+                    : ".8rem",
+                }}
+              />
             </IconButton>
             <Typography
               sx={{
                 ml: 2,
                 flex: 1,
                 fontFamily: "DM Sans",
+                fontSize: minWidth600
+                  ? "1.2rem"
+                  : minWidth425
+                  ? "1rem"
+                  : minWidth375
+                  ? ".9rem"
+                  : ".8rem",
                 textAlign: "center",
                 letterSpacing: ".5px",
               }}
-              variant="h6"
               component="div"
             >
               Frequently Asked Questions
@@ -90,9 +98,7 @@ export default function AboutusButton() {
           </Toolbar>
         </AppBar>
         <List>
-          {questions.map((q, index) => {
-            return <ListContent key={index} question={q} index={index} />
-          })}
+          <ListContent />
         </List>
       </Dialog>
     </React.Fragment>
