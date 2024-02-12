@@ -31,7 +31,6 @@ This project is a SPA built using ReactJS. And some concepts like localization, 
 - Vanilla CSS
 - React Bootstrap
 - MUI
-- Vani
 - Axios
 - Framer Motion
 - I18 Next
